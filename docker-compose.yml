@@ -1,6 +1,7 @@
 
 services:
   api-gateway:
+    image: mhdlks77/api-gateway
     build: ./api-gateway
     container_name: api-gateway
     ports:
@@ -14,6 +15,7 @@ services:
       - rabbitmq
 
   user-ms-v1:
+    image: mhdlks77/user-ms-v1
     build: ./user-ms-v1
     container_name: user-ms-v1
     ports:
@@ -26,6 +28,7 @@ services:
       - rabbitmq
 
   user-ms-v2:
+    image: mhdlks77/user-ms-v2
     build: ./user-ms-v2
     container_name: user-ms-v2
     ports:
@@ -38,6 +41,7 @@ services:
       - rabbitmq
 
   order-ms:
+    image: mhdlks77/order-ms
     build: ./order-ms
     container_name: order-ms
     ports:
