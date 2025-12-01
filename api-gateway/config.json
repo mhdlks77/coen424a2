@@ -1,0 +1,8 @@
+{
+    "userRoutingPercentage": 70,
+    "services": {
+        "userV1": "http://user-ms-v1:5001",
+        "userV2": "http://user-ms-v2:5002",
+        "order": "http://order-ms:5003"
+    }
+}

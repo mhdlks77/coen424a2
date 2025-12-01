@@ -1,0 +1,73 @@
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "5000:5000"
+    environment:
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq/
+    depends_on:
+      - user-ms-v1
+      - user-ms-v2
+      - order-ms
+      - rabbitmq
+
+  user-ms-v1:
+    build: ./user-ms-v1
+    container_name: user-ms-v1
+    ports:
+      - "5001:5001"
+    environment:
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq/
+      - MONGO_URI=${MONGO_URI}
+      - DB_NAME=microservices_db
+    depends_on:
+      - rabbitmq
+
+  user-ms-v2:
+    build: ./user-ms-v2
+    container_name: user-ms-v2
+    ports:
+      - "5002:5002"
+    environment:
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq/
+      - MONGO_URI=${MONGO_URI}
+      - DB_NAME=microservices_db
+    depends_on:
+      - rabbitmq
+
+  order-ms:
+    build: ./order-ms
+    container_name: order-ms
+    ports:
+      - "5003:5003"
+    environment:
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq/
+      - MONGO_URI=${MONGO_URI}
+      - DB_NAME=microservices_db
+    depends_on:
+      - rabbitmq
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"   # AMQP protocol
+      - "15672:15672" # RabbitMQ dashboard
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+# For local Mongo if needed:
+#  mongo:
+#    image: mongo
+#    container_name: mongo
+#    restart: always
+#    ports:
+#      - "27017:27017"
+#    volumes:
+#      - mongo_data:/data/db
+
+volumes:
+  mongo_data:

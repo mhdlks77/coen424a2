@@ -1,0 +1,83 @@
+# ---------------------------
+# Python
+# ---------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.so
+*.egg*
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Pytest cache
+.pytest_cache/
+
+# ---------------------------
+# Environment & Secrets
+# ---------------------------
+.env
+*.env
+
+# ---------------------------
+# FastAPI / Uvicorn
+# ---------------------------
+*.log
+*.sqlite3
+
+# ---------------------------
+# Docker / Compose
+# ---------------------------
+# Prevent local build layers from being committed
+**/Dockerfile.*
+docker-compose.override.yml
+docker-compose.local.yml
+
+# If using Docker volume directories
+volumes/
+data/
+mongo_data/
+
+# ---------------------------
+# OS Files
+# ---------------------------
+.DS_Store
+Thumbs.db
+
+# ---------------------------
+# Python IDEs
+# ---------------------------
+# VS Code
+.vscode/
+*.code-workspace
+# PyCharm
+.idea/
+
+# ---------------------------
+# Cache / Artifacts
+# ---------------------------
+*.cache
+cache/
+logs/
+*.pid
+
+# ---------------------------
+# Node.js (if ever added)
+# ---------------------------
+node_modules/
+
+# ---------------------------
+# RabbitMQ? (just in case)
+# ---------------------------
+rabbitmq-data/

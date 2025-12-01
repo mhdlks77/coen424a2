@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pydantic
+python-dotenv
+motor
+pymongo
+aio-pika
+httpx
